@@ -129,10 +129,8 @@ function theme_panels_accordion_render_region($vars) {
   $display = $vars['display'];
 
   $content = implode('', $vars['panes']);
-  jquery_ui_add('ui.accordion');
-  jquery_ui_add('effects.core');
-
-  drupal_add_css(drupal_get_path('module', 'jquery_ui').'/jquery.ui/themes/base/ui.accordion.css');
+  drupal_add_library('system', 'ui.accordion');
+  drupal_add_library('system', 'effects.core');
 
   foreach($settings as $key=>$val){
     // if it's a string, convert slide to 'slide' (necessary as per http://docs.jquery.com/UI/Accordion).
@@ -218,7 +216,7 @@ function theme_panels_accordion_region($vars) {
 
   $pane_id = $vars['accordion_id'];
 
-  $output = '<div id="' . $pane_id  . '"">';
+  $output = '<div id="' . $pane_id  . '">';
   $output .= $vars['content'];
   return $output;
 }
